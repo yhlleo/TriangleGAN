@@ -8,7 +8,7 @@ from . import keypoint_detector as kpd
 
 # Our GAN
 #-------------------------------------------------------------------------------------
-class RollingGANGenerator(nn.Module):
+class TriangleGANGenerator(nn.Module):
     def __init__(self, in_nc, out_nc, ngf, vdim=11, cond_dim=1, num_kp=64, 
                  norm_layer=nn.InstanceNorm2d, use_dropout=False, n_blocks=6, 
                  padding_type='reflect', use_kpd=0, temperature=0.1, kp_variance=0.01,
@@ -116,7 +116,7 @@ class RollingGANGenerator(nn.Module):
         decode_out = self.decode(torch.cat([resblock_out, condition_features], dim=1))
         return kp, self.img_rec(decode_out), self.attetion_reg(decode_out)
 
-def define_GRollingGAN(in_nc, 
+def define_GTriangleGAN(in_nc, 
                        out_nc,
                        ngf,
                        vdim,
@@ -130,7 +130,7 @@ def define_GRollingGAN(in_nc,
                        init_gain=0.02, 
                        gpu_ids=[]):
     norm_layer = get_norm_layer(norm_type=norm)
-    net = RollingGANGenerator(in_nc, out_nc, ngf=ngf, vdim=vdim, cond_dim=cond_dim, num_kp=num_kp,
+    net = TriangleGANGenerator(in_nc, out_nc, ngf=ngf, vdim=vdim, cond_dim=cond_dim, num_kp=num_kp,
                               norm_layer=norm_layer, use_dropout=use_dropout, use_kpd=use_kpd,
                               multisteps=multisteps)
     return init_net(net, init_type, init_gain, gpu_ids)

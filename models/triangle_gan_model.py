@@ -8,9 +8,9 @@ from . import networks
 from . import keypoint_detector as kpd
 from . import trianglegan_networks as trianglegan
 
-class RollingGANModel(BaseModel):
+class TriangleGANModel(BaseModel):
     """
-    RollingGAN
+    TriangleGAN
     """
     @staticmethod
     def modify_commandline_options(parser, is_train=True):
@@ -61,7 +61,7 @@ class RollingGANModel(BaseModel):
 
         # define networks (both Generators and discriminators)
         # encode image to features
-        self.netG1 = trianglegan.define_GRollingGAN(opt.input_nc, # 3x256x256
+        self.netG1 = trianglegan.define_GTriangleGAN(opt.input_nc, # 3x256x256
                                                    opt.output_nc,
                                                    opt.ngf,
                                                    opt.vdim,
@@ -75,7 +75,7 @@ class RollingGANModel(BaseModel):
                                                    opt.init_gain,
                                                    self.gpu_ids)
 
-        self.netG2 = trianglegan.define_GRollingGAN(opt.input_nc, # 3x256x256
+        self.netG2 = trianglegan.define_GTriangleGAN(opt.input_nc, # 3x256x256
                                                    opt.output_nc,
                                                    opt.ngf,
                                                    opt.vdim,
