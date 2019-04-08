@@ -18,6 +18,7 @@ For Conda users, we provide a installation script `./scripts/conda_deps.sh`. Alt
 ### 3.Train/Test
 
  1.Download dataset and copy them into `./datasets`
+ 
  2.Modify the scripts to train/test:
 
 ```
