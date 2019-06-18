@@ -1,4 +1,4 @@
-name: gesture-transfer
+name: trianglegan
 channels:
 - peterjc123
 - menpo
@@ -11,9 +11,9 @@ dependencies:
 - opencv3
 - scikit-image
 - scikit-learn
+- torchvision=0.2.1
 - pip:
   - dominate==2.3.1
-  - git+https://github.com/pytorch/vision.git
   - Pillow==5.0.0
   - numpy==1.14.1
   - visdom==0.1.7
