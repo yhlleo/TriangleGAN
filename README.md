@@ -1,6 +1,6 @@
 ## TriangleGAN
 
-A new gesture-to-gesture translation framework.
+A new gesture-to-gesture translation framework. [Gesture-to-Gesture Translation in the Wild via Category-Independent Conditional Maps](), to be presented in ACM MultiMedia 2019.
 
 
 ### 1.Dataset preparing
@@ -13,7 +13,11 @@ A new gesture-to-gesture translation framework.
 
 ### 2.Installation
 
-For Conda users, we provide a installation script `./scripts/conda_deps.sh`. Alternatively, you can create a new Conda environment using `conda env create -f environment.yml`.
+We provide an user-friendly configuring method via [Conda](https://docs.conda.io/en/latest/) system, and you can create a new Conda environment using the command:
+
+```
+conda env create -f environment.yml
+```
 
 ### 3.Train/Test
 
@@ -21,13 +25,37 @@ For Conda users, we provide a installation script `./scripts/conda_deps.sh`. Alt
  
  2.Modify the scripts to train/test:
 
+  - Training
+
 ```
 sh ./scripts/train_trianglegan_ntu.sh
+sh ./scripts/train_trianglegan_senz3d.sh
+```
+ - Testing
 
-
+```
 sh ./scripts/test_trianglegan_ntu.sh
+sh ./scripts/train_trianglegan_senz3d.sh
 ```
 
-### 4.Visual Results
+### 4.Evaluation
+
+ - Metrics
+
+### 5.Visual Results
 
 [More Details >>>](./figures/README.md)
+
+### Acknowledgment
+
+This code is based on the [pytorch-CycleGAN-and-pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix). Thanks to the contributors of this project.
+
+### References
+
+If you take use of our datasets or code, please cite our papers:
+
+```
+
+```
+
+If you have any questions, please contact me without hesitation (yahui.cvrs AT gmail.com).
