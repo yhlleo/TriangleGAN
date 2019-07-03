@@ -16,12 +16,12 @@ BATCH_SIZE=4
 LOAD_SIZE=256
 NITER=10
 NITER_DECAY=10
-CONTINUE_TRAIN=0
+CONTINUE_TRAIN=1
 
 NORM=instance
 CHECKPOINTS_DIR=./checkpoints
 
-GPU_IDS=0
+GPU_IDS=$1
 python3.5 ./train.py \
   --dataroot ${DATAROOT} \
   --data_name ${DATA_NAME} \
