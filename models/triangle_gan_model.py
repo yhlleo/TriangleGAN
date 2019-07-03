@@ -140,6 +140,9 @@ class TriangleGANModel(BaseModel):
         #else:
         self.image_paths = input['A_paths']
 
+    def _compute_loss_D(self, estim, is_real):
+        return -torch.mean(estim) if is_real else torch.mean(estim)
+
     def _inference(self, net, real_A, cond_B, RB, rec_A=None):
         kp, fake_B, fake_B_mask = net(real_A, cond_B, RB, rec_A)
         fake_B_masked = fake_B_mask * real_A + (1 - fake_B_mask) * fake_B
@@ -211,15 +214,15 @@ class TriangleGANModel(BaseModel):
         # Discriminator loss
         # Real B
         out_src_real_B, out_cls_real_B =  self.netD(torch.cat([self.real_B, self.cond_B], dim=1))
-        loss_D_real_B = self.criterionGAN(out_src_real_B, True)
+        loss_D_real_B = self._compute_loss_D(out_src_real_B, True)
         # Fake B1
         fake_B1_masked = self.fake_B1_masked_pool.query(self.fake_B1_masked)
         out_src_fake_B1, _ = self.netD(torch.cat([fake_B1_masked, self.cond_B], dim=1).detach())
-        loss_D_fake_B1 = self.criterionGAN(out_src_fake_B1, False)
+        loss_D_fake_B1 = self._compute_loss_D(out_src_fake_B1, False)
         # Fake B2
         fake_B2_masked = self.fake_B2_masked_pool.query(self.fake_B2_masked)
         out_src_fake_B2, _ = self.netD(torch.cat([fake_B2_masked, self.cond_B], dim=1).detach())
-        loss_D_fake_B2 = self.criterionGAN(out_src_fake_B2, False)
+        loss_D_fake_B2 = self._compute_loss_D(out_src_fake_B2, False)
         self.loss_D = (loss_D_real_B*2 + loss_D_fake_B1 + loss_D_fake_B2) * 0.5 * self.opt.lambda_prob
         
         # gradient penalty loss
@@ -245,7 +248,7 @@ class TriangleGANModel(BaseModel):
         """Calculate the loss for generators G"""
         # GAN loss D_A(G(B))
         out_src_fake_B, out_cls_fake_B = self.netD(torch.cat([self.fake_B1_masked, self.cond_B], dim=1))
-        self.loss_GAB1 = self.criterionGAN(out_src_fake_B, True) * self.opt.lambda_adv
+        self.loss_GAB1 = self._compute_loss_D(out_src_fake_B, True) * self.opt.lambda_adv
         self.loss_gcls1 = self.criterionCls(out_cls_fake_B, self.real_RB) * self.opt.lambda_cls
 
         # Forward reconstruction loss:
@@ -269,7 +272,7 @@ class TriangleGANModel(BaseModel):
         """Calculate the loss for generators G"""
         # GAN loss D_A(G(B))
         out_src_fake_B, out_cls_fake_B = self.netD(torch.cat([self.fake_B2_masked, self.cond_B], dim=1))
-        self.loss_GAB2 = self.criterionGAN(out_src_fake_B, True) * self.opt.lambda_adv
+        self.loss_GAB2 = self._compute_loss_D(out_src_fake_B, True) * self.opt.lambda_adv
         self.loss_gcls2 = self.criterionCls(out_cls_fake_B, self.real_RB) * self.opt.lambda_cls
 
         # Forward reconstruction loss:
