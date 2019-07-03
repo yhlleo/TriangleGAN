@@ -13,7 +13,7 @@ class TriangleGANGenerator(nn.Module):
                  norm_layer=nn.InstanceNorm2d, use_dropout=False, n_blocks=6, 
                  padding_type='reflect', use_kpd=0, temperature=0.1, kp_variance=0.01,
                  clip_variance=0.001, multisteps=False):
-        super(RollingGANGenerator, self).__init__()
+        super(TriangleGANGenerator, self).__init__()
         assert(n_blocks > 0)
         if type(norm_layer) == functools.partial:
             use_bias = norm_layer.func == nn.InstanceNorm2d
