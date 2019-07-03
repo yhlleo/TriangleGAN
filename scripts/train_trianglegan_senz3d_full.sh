@@ -16,7 +16,7 @@ BATCH_SIZE=4
 LOAD_SIZE=256
 NITER=10
 NITER_DECAY=10
-CONTINUE_TRAIN=1
+GAN_MODE=wgangp
 
 NORM=instance
 CHECKPOINTS_DIR=./checkpoints
@@ -44,4 +44,6 @@ python3.5 ./train.py \
   --gpu_ids ${GPU_IDS} \
   --niter ${NITER} \
   --niter_decay ${NITER_DECAY} \
-  --continue_train ${CONTINUE_TRAIN}
+  --continue_train 0 \
+  --display_id 0 \
+  --gan_mode ${GAN_MODE}
