@@ -9,7 +9,8 @@ import numpy as np
 import data_io
 import ntpath
 import json
-from scipy.misc import imread
+from cv2 import imread
+#from scipy.misc import imread
 from basic_scores import mse, psnr
 from inception_score import inception_score
 from fid_scores import cal_fid as fid_score
