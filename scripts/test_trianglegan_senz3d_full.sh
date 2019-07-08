@@ -5,7 +5,7 @@ MODEL_MODE=triangle_gan
 DATASET_MODE=gesture_full
 COND_TYPE=triangle
 IMAGE_NAME=images-full
-TEST_NAME=test.senz3d.lst #senz3d.full.user-study.demo #senz3d.full.video.demo #framework.demo #senz3d.translation.demo #senz3d.diversity.demo #senz3d.full.demo 
+TEST_NAME=test.full.lst #senz3d.full.user-study.demo #senz3d.full.video.demo #framework.demo #senz3d.translation.demo #senz3d.diversity.demo #senz3d.full.demo 
 
 INPUT_NC=3
 OUTPUT_NC=3

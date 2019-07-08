@@ -5,7 +5,7 @@ MODEL_MODE=triangle_gan
 DATASET_MODE=gesture_full
 COND_TYPE=triangle2
 IMAGE_NAME=images-full
-TEST_NAME=test.ntu.lst #ntu.full.demo #ntu.full.user-study.demo #ntu.full.video.demo #ntu.translation.demo #ntu.diversity.demo 
+TEST_NAME=test.full.lst #ntu.full.demo #ntu.full.user-study.demo #ntu.full.video.demo #ntu.translation.demo #ntu.diversity.demo 
 
 INPUT_NC=3
 OUTPUT_NC=3
