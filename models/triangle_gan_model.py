@@ -136,9 +136,10 @@ class TriangleGANModel(BaseModel):
         self.real_B  = input['B'].to(self.device)
         self.RA = input['R_A'].to(self.device).float().cuda()
         self.cond_A = input['cond_A'].to(self.device).float().cuda()
-        if self.opt.lambda_cls > 0:
-            self.real_RA = torch.argmax(input['R_A'].to(self.device), dim=1).long().cuda()
-            self.real_RB = torch.argmax(input['R_B'].to(self.device), dim=1).long().cuda()
+        if self.isTrain:
+            if self.opt.lambda_cls > 0:
+                self.real_RA = torch.argmax(input['R_A'].to(self.device), dim=1).long().cuda()
+                self.real_RB = torch.argmax(input['R_B'].to(self.device), dim=1).long().cuda()
         #else:
         self.image_paths = input['A_paths']
 
