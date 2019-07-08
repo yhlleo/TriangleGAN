@@ -1,6 +1,7 @@
 import os
 import numpy as np
-from scipy.misc import imread
+from cv2 import imread
+#from scipy.misc import imread
 import torch
 import glob
 import torch.nn.functional as F
