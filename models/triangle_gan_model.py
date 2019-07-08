@@ -47,12 +47,14 @@ class TriangleGANModel(BaseModel):
                            'GAB1', 'gcls1', 'rec1', 'cycle1', 'idt1', 'tv1', 
                            'GAB2', 'gcls2', 'rec2', 'cycle2', 'idt2', 'tv2']
         # specify the images you want to save/display. The training/test scripts will call <BaseModel.get_current_visuals>
-        self.visual_names = ['real_A', 'cond_B']
-        if self.isTrain:
-            self.visual_names + ['real_B', 'fake_B1_masked', 'fake_B2_mask', 'fake_B2_masked']
-        else:
-            self.visual_names = ['fake_B1_masked', 'fake_B2_mask', 'fake_B2_masked']
+        
+        #self.visual_names = ['real_A', 'cond_B']
+        #if self.isTrain:
+        #    self.visual_names + ['real_B', 'fake_B1_masked', 'fake_B2_mask', 'fake_B2_masked']
+        #else:
+        #    self.visual_names = ['fake_B1_masked', 'fake_B2_mask', 'fake_B2_masked']
 
+        self.visual_names = ['real_A', 'real_B', 'cond_B', 'fake_B1_masked', 'fake_B2_mask', 'fake_B2_masked']
         # specify the models you want to save to the disk. The training/test scripts will call <BaseModel.save_networks> and <BaseModel.load_networks>.
         if self.isTrain:
             self.model_names = ['G1', 'G2', 'D']
@@ -130,13 +132,13 @@ class TriangleGANModel(BaseModel):
         self.real_A  = input['A'].to(self.device)
         self.RB = input['R_B'].to(self.device).float().cuda()
         self.cond_B = input['cond_B'].to(self.device).float().cuda()
-        if self.isTrain:
-            self.real_B  = input['B'].to(self.device)
-            self.RA = input['R_A'].to(self.device).float().cuda()
-            self.cond_A = input['cond_A'].to(self.device).float().cuda()
-            if self.opt.lambda_cls > 0:
-                self.real_RA = torch.argmax(input['R_A'].to(self.device), dim=1).long().cuda()
-                self.real_RB = torch.argmax(input['R_B'].to(self.device), dim=1).long().cuda()
+        #if self.isTrain:
+        self.real_B  = input['B'].to(self.device)
+        self.RA = input['R_A'].to(self.device).float().cuda()
+        self.cond_A = input['cond_A'].to(self.device).float().cuda()
+        if self.opt.lambda_cls > 0:
+            self.real_RA = torch.argmax(input['R_A'].to(self.device), dim=1).long().cuda()
+            self.real_RB = torch.argmax(input['R_B'].to(self.device), dim=1).long().cuda()
         #else:
         self.image_paths = input['A_paths']
 
