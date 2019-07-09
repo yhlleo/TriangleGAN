@@ -1,7 +1,6 @@
 import os
 import numpy as np
-from cv2 import imread
-#from scipy.misc import imread
+import cv2
 import torch
 import glob
 import torch.nn.functional as F
@@ -12,6 +11,10 @@ try:
 except ImportError:
     # If not tqdm is not available, provide a mock version of it
     def tqdm(x): return x
+
+def imread(file):
+    im = cv2.imread(file, cv2.IMREAD_UNCHANGED)
+    return cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
 
 # build an iterable generator 
 def data_prepare(files, batch_size=8, use_cuda=False):

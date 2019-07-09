@@ -22,7 +22,7 @@ NORM=instance
 CHECKPOINTS_DIR=./checkpoints
 NUM_TEST=20000
 
-GPU_IDS=0
+GPU_IDS=$1
 python3 ./test.py \
   --dataroot ${DATAROOT} \
   --data_name ${DATA_NAME} \

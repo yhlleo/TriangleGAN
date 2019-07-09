@@ -9,8 +9,6 @@ import numpy as np
 import data_io
 import ntpath
 import json
-from cv2 import imread
-#from scipy.misc import imread
 from basic_scores import mse, psnr
 from inception_score import inception_score
 from fid_scores import cal_fid as fid_score
@@ -53,8 +51,8 @@ if __name__ == '__main__':
     if metric_mode == 'mse' or metric_mode == 'psnr':
         scores = []
         for src, tgt in zip(src_img_list, tgt_img_list):
-            im_src = imread(src).astype(np.float32)
-            im_tgt = imread(tgt).astype(np.float32)
+            im_src = data_io.imread(src).astype(np.float32)
+            im_tgt = data_io.imread(tgt).astype(np.float32)
 
             if metric_mode == 'mse':
                 scores.append(mse(im_src, im_tgt))
