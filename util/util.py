@@ -54,7 +54,7 @@ def save_image(image_numpy, image_path):
         image_path (str)          -- the path of the image
     """
     image_pil = Image.fromarray(image_numpy)
-    image_pil.save(image_path, compress_level=0)
+    image_pil.save(image_path)
 
 
 def print_numpy(x, val=True, shp=False):
