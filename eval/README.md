@@ -24,3 +24,4 @@ python3 eval.py \
 ```
 
  
+ Note: please use the matlab code to calculate FRD score.
