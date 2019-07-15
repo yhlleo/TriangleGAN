@@ -46,4 +46,4 @@ Notes: OpenPose can't detect all hand gestures in the two datasets.
 
 ### 3.Download
 
- You can download the dataset from [Google Drive](), [zenodo]() or [Baidu Yunpan]() (psw: ).  
+ You can download the dataset from [Google Drive]().  

@@ -38,13 +38,11 @@ sh ./scripts/test_trianglegan_ntu.sh
 sh ./scripts/train_trianglegan_senz3d.sh
 ```
 
+ 3.The pretrained model is saved at `./checkpoints/{name}_pretrained/latest_net_{name}.pth`. Check [here]() for all the available TriangleGAN models.
+
 ### 4.Evaluation
 
- - Metrics: 
-  - Peak Signal-toNoise Ratio, PSNR
-  - Fréchet Inception Distance, FID
-  - Inception Score, IS
-Notes: The lower, the better: MSE, FID, FRD
+[More Details >>>](./eval/README.md)
 
 ### 5.Visual Results
 
