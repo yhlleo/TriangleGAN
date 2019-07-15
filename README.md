@@ -40,7 +40,7 @@ sh ./scripts/test_trianglegan_ntu.sh
 sh ./scripts/train_trianglegan_senz3d.sh
 ```
 
- 3.The pretrained model is saved at `./checkpoints/{name}_pretrained/latest_net_{name}.pth`. Check [here]() for all the available TriangleGAN models.
+3.The pretrained model is saved at `./checkpoints/{model_name}`. Check [here](https://drive.google.com/open?id=1UmZ2dgxyphCeeYKz4Opjh_Oq8NogSEev) for all the available TriangleGAN models.
 
 ### 4.Evaluation
 
