@@ -72,7 +72,6 @@ If you take use of our datasets or code, please cite our papers (coming soon):
   journal={arXiv preprint arXiv:1907.xxx},
   year={2019}
 }
-
 ```
 
 If you have any questions, please contact me without hesitation (yahui.liu AT unitn.it).
