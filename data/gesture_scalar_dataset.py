@@ -1,3 +1,5 @@
+# Author: Yahui Liu <yahui.liu@unitn.it>
+
 import os.path
 import random
 import numpy as np
@@ -7,18 +9,10 @@ from data.image_folder import make_gesture_dataset
 from PIL import Image
 
 class CondGestureV1Dataset(BaseDataset):
-    """A dataset class for paired image dataset.
-
-    It assumes that the directory '/path/to/data/train' contains image pairs in the form of {A,B}.
-    During test time, you need to prepare a directory '/path/to/data/test'.
-    """
+    """A dataset class for paired image dataset."""
 
     def __init__(self, opt):
-        """Initialize this dataset class.
-
-        Parameters:
-            opt (Option class) -- stores all the experiment flags; needs to be a subclass of BaseOptions
-        """
+        """Initialize this dataset class."""
         BaseDataset.__init__(self, opt)
         self.im_suffix = '.png'
         self.image_name = opt.image_name
@@ -31,7 +25,6 @@ class CondGestureV1Dataset(BaseDataset):
                                                  self.opt.phase)
             random.seed(1234)
             random.shuffle(self.AB_paths)
-            #self._get_random_cond(self.opt.vdim)
             assert(self.opt.load_size >= self.opt.crop_size)   # crop_size should be smaller than the size of loaded image
         else:
             self.data_dir = os.path.join(self.opt.dataroot,
@@ -50,15 +43,8 @@ class CondGestureV1Dataset(BaseDataset):
 
         Parameters:
             index - - a random integer for data indexing
-
-        Returns a dictionary that contains A, B, A_paths and B_paths
-            A (tensor) - - an image in the input domain
-            R (tensor) - - its corresponding landuse vector
-            A_paths (str) - - image paths
-            B_paths (str) - - image paths (same as A_paths)
         """
         # read a image and its corresponding label map given a random integer index
-
         AB_path = self.AB_paths[index]
         if self.opt.phase == 'train':
             if random.random() > 0.5:

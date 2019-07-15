@@ -1,3 +1,5 @@
+# Author: Yahui Liu <yahui.liu@unitn.it>
+
 from torch import nn
 import torch
 import numpy as np
@@ -153,4 +155,4 @@ def visualizer(src_img, kp_array, kp_size=2, colormap='gist_rainbow'):
         rr, cc = circle(kp[1], kp[0], kp_size, shape=src_img.shape[1:3])
         src_img[0][rr, cc] = np.array(cmap(float(kp_ind) / num_kp))[:3] - 0.5
     # numpy to tensor
-    return torch.from_numpy(np.transpose(src_img, [0,3,1,2]))#.float().cuda()
+    return torch.from_numpy(np.transpose(src_img, [0,3,1,2]))

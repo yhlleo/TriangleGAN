@@ -50,7 +50,6 @@ class BaseOptions():
         parser.add_argument('--num_kp', type=int, default=64, help='amount of key points')
         parser.add_argument('--use_kpd', type=int, default=0, help='use key points detector')
         parser.add_argument('--roll_num', type=int, default=1, help='iteration number for rolling guidance refinement module')
-        parser.add_argument('--do_saturate_mask', action="store_true", default=False, help='do use mask_fake for mask_cyc')
         parser.add_argument('--draw_kp', type=int, default=0, help='if true, draw key-points on the final images.')
         # dataset parameters
         parser.add_argument('--dataset_mode', type=str, default='cond_gesture2', help='chooses how datasets are loaded. [cond_gesture1 | cond_gesture2 | cond_gesture3]')

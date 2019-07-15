@@ -1,3 +1,5 @@
+# Author: Yahui Liu <yahui.liu@unitn.it>
+
 import torch
 import torch.nn as nn
 from torch.nn import init
@@ -6,7 +8,7 @@ import functools
 from .networks import get_norm_layer, init_net, ResnetBlock
 from . import keypoint_detector as kpd
 
-# Our GAN
+# Triangle GAN
 #-------------------------------------------------------------------------------------
 class TriangleGANGenerator(nn.Module):
     def __init__(self, in_nc, out_nc, ngf, vdim=11, cond_dim=1, num_kp=64, 
@@ -142,14 +144,7 @@ class StarGANDiscriminator(nn.Module):
     """Defines a PatchGAN discriminator"""
 
     def __init__(self, input_nc, ndf=64, n_layers=6, vdim=11, norm_layer=nn.InstanceNorm2d, img_size=256):
-        """Construct a PatchGAN discriminator
-
-        Parameters:
-            input_nc (int)  -- the number of channels in input images
-            ndf (int)       -- the number of filters in the last conv layer
-            n_layers (int)  -- the number of hidden conv layers in the discriminator
-            norm_layer      -- normalization layer
-        """
+        """Construct a PatchGAN discriminator"""
         super(StarGANDiscriminator, self).__init__()
         if type(norm_layer) == functools.partial:  # no need to use bias as BatchNorm2d has affine parameters
             use_bias = norm_layer.func != nn.InstanceNorm2d

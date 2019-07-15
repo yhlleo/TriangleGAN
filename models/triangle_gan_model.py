@@ -30,13 +30,13 @@ class TriangleGANModel(BaseModel):
             parser.add_argument('--lambda_adv', type=float, default=2.0, help='weight for adversarial loss')
             parser.add_argument('--lambda_prob', type=float, default=1.0, help='weight for discriminal loss')
             parser.add_argument('--lambda_cls', type=float, default=1.0, help='weight for classification loss')
-            parser.add_argument('--lambda_gp', type=float, default=10.0, help='weight for gradient penalty loss')
+            parser.add_argument('--lambda_gp', type=float, default=0.0, help='weight for gradient penalty loss')
             parser.add_argument('--lambda_idt', type=float, default=10.0, help='use identity mapping')
             parser.add_argument('--lambda_tv', type=float, default=1e-5, help='weight for tv loss')
         return parser
 
     def __init__(self, opt):
-        """Initialize the CycleGAN class.
+        """Initialize the TriangleGAN class.
 
         Parameters:
             opt (Option class)-- stores all the experiment flags; needs to be a subclass of BaseOptions
@@ -47,12 +47,6 @@ class TriangleGANModel(BaseModel):
                            'GAB1', 'gcls1', 'rec1', 'cycle1', 'idt1', 'tv1', 
                            'GAB2', 'gcls2', 'rec2', 'cycle2', 'idt2', 'tv2']
         # specify the images you want to save/display. The training/test scripts will call <BaseModel.get_current_visuals>
-        
-        #self.visual_names = ['real_A', 'cond_B']
-        #if self.isTrain:
-        #    self.visual_names + ['real_B', 'fake_B1_masked', 'fake_B2_mask', 'fake_B2_masked']
-        #else:
-        #    self.visual_names = ['fake_B1_masked', 'fake_B2_mask', 'fake_B2_masked']
 
         self.visual_names = ['real_A', 'real_B', 'cond_B', 'fake_B1_masked', 'fake_B2_mask', 'fake_B2_masked']
         # specify the models you want to save to the disk. The training/test scripts will call <BaseModel.save_networks> and <BaseModel.load_networks>.
@@ -63,47 +57,48 @@ class TriangleGANModel(BaseModel):
 
         # define networks (both Generators and discriminators)
         # encode image to features
-        self.netG1 = trianglegan.define_GTriangleGAN(opt.input_nc, # 3x256x256
-                                                   opt.output_nc,
-                                                   opt.ngf,
-                                                   opt.vdim,
-                                                   opt.cond_dim,
-                                                   opt.num_kp,
-                                                   False, #opt.use_kpd,
-                                                   False,
-                                                   opt.norm,
-                                                   not opt.no_dropout,
-                                                   opt.init_type,
-                                                   opt.init_gain,
-                                                   self.gpu_ids)
+        self.netG1 = trianglegan.define_GTriangleGAN(opt.input_nc,
+                                                     opt.output_nc,
+                                                     opt.ngf,
+                                                     opt.vdim,
+                                                     opt.cond_dim,
+                                                     opt.num_kp,
+                                                     opt.use_kpd,
+                                                     False,
+                                                     opt.norm,
+                                                     not opt.no_dropout,
+                                                     opt.init_type,
+                                                     opt.init_gain,
+                                                     self.gpu_ids)
 
-        self.netG2 = trianglegan.define_GTriangleGAN(opt.input_nc, # 3x256x256
-                                                   opt.output_nc,
-                                                   opt.ngf,
-                                                   opt.vdim,
-                                                   opt.cond_dim,
-                                                   opt.num_kp,
-                                                   False, #opt.use_kpd,
-                                                   True,
-                                                   opt.norm,
-                                                   not opt.no_dropout,
-                                                   opt.init_type,
-                                                   opt.init_gain,
-                                                   self.gpu_ids)
+        self.netG2 = trianglegan.define_GTriangleGAN(opt.input_nc,
+                                                     opt.output_nc,
+                                                     opt.ngf,
+                                                     opt.vdim,
+                                                     opt.cond_dim,
+                                                     opt.num_kp,
+                                                     opt.use_kpd,
+                                                     True,
+                                                     opt.norm,
+                                                     not opt.no_dropout,
+                                                     opt.init_type,
+                                                     opt.init_gain,
+                                                     self.gpu_ids)
 
         if self.isTrain:  # define discriminators
             self.netD = trianglegan.define_DStar(opt.output_nc+1, 
-                                                opt.ndf,
-                                                opt.n_layers_D, 
-                                                opt.vdim,
-                                                opt.load_size,
-                                                opt.norm, 
-                                                opt.init_type, 
-                                                opt.init_gain, 
-                                                self.gpu_ids)
+                                                 opt.ndf,
+                                                 opt.n_layers_D, 
+                                                 opt.vdim,
+                                                 opt.load_size,
+                                                 opt.norm, 
+                                                 opt.init_type, 
+                                                 opt.init_gain, 
+                                                 self.gpu_ids)
 
         if self.isTrain:
-            self.fake_B1_masked_pool = ImagePool(opt.pool_size)  # create image buffer to store previously generated images
+            # create image buffer to store previously generated images
+            self.fake_B1_masked_pool = ImagePool(opt.pool_size) 
             self.fake_B2_masked_pool = ImagePool(opt.pool_size)
             # define loss functions
             self.criterionGAN = networks.GANLoss(opt.gan_mode).to(self.device)  # define GAN loss.
@@ -141,10 +136,6 @@ class TriangleGANModel(BaseModel):
                 self.real_RA = torch.argmax(input['R_A'].to(self.device), dim=1).long().cuda()
                 self.real_RB = torch.argmax(input['R_B'].to(self.device), dim=1).long().cuda()
         #else:
-        self.image_paths = input['A_paths']
-
-    #def _compute_loss_D(self, estim, is_real):
-    #    return -torch.mean(estim) if is_real else torch.mean(estim)
 
     def _inference(self, net, real_A, cond_B, RB, rec_A=None):
         kp, fake_B, fake_B_mask = net(real_A, cond_B, RB, rec_A)
@@ -249,7 +240,7 @@ class TriangleGANModel(BaseModel):
 
     def backward_G1(self):
         """Calculate the loss for generators G"""
-        # GAN loss D_A(G(B))
+        # GAN loss
         out_src_fake_B, out_cls_fake_B = self.netD(torch.cat([self.fake_B1_masked, self.cond_B], dim=1))
         self.loss_GAB1 = self.criterionGAN(out_src_fake_B, True) * self.opt.lambda_adv
         self.loss_gcls1 = self.criterionCls(out_cls_fake_B, self.real_RB) * self.opt.lambda_cls
@@ -273,7 +264,7 @@ class TriangleGANModel(BaseModel):
 
     def backward_G2(self):
         """Calculate the loss for generators G"""
-        # GAN loss D_A(G(B))
+        # GAN loss
         out_src_fake_B, out_cls_fake_B = self.netD(torch.cat([self.fake_B2_masked, self.cond_B], dim=1))
         self.loss_GAB2 = self.criterionGAN(out_src_fake_B, True) * self.opt.lambda_adv
         self.loss_gcls2 = self.criterionCls(out_cls_fake_B, self.real_RB) * self.opt.lambda_cls

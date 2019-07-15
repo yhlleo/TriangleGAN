@@ -1,3 +1,5 @@
+# Author: Yahui Liu <yahui.liu@unitn.it>
+
 import os.path
 import random
 import numpy as np
@@ -8,18 +10,10 @@ from PIL import Image
 import cv2
 
 class GesturePartDataset(BaseDataset):
-    """A dataset class for paired image dataset.
-
-    It assumes that the directory '/path/to/data/train' contains image pairs in the form of {A,B}.
-    During test time, you need to prepare a directory '/path/to/data/test'.
-    """
+    """A dataset class for paired image dataset."""
 
     def __init__(self, opt):
-        """Initialize this dataset class.
-
-        Parameters:
-            opt (Option class) -- stores all the experiment flags; needs to be a subclass of BaseOptions
-        """
+        """Initialize this dataset class."""
         BaseDataset.__init__(self, opt)
         self.im_suffix = '.png'
         self.image_name = opt.image_name
@@ -53,15 +47,8 @@ class GesturePartDataset(BaseDataset):
 
         Parameters:
             index - - a random integer for data indexing
-
-        Returns a dictionary that contains A, B, A_paths and B_paths
-            A (tensor) - - an image in the input domain
-            R (tensor) - - its corresponding landuse vector
-            A_paths (str) - - image paths
-            B_paths (str) - - image paths (same as A_paths)
         """
         # read a image and its corresponding label map given a random integer index
-
         AB_path = self.AB_paths[index]
         if len(AB_path) == 5:
             A_path = os.path.join(self.data_dir, self.image_name, AB_path[0]+self.im_suffix)
