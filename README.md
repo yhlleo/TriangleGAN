@@ -23,11 +23,11 @@ conda env create -f environment.yml
 
 ### 3.Train/Test
 
- 1.Download dataset and copy them into `./datasets`
+1.Download dataset and copy them into `./datasets`
  
- 2.Modify the scripts to train/test:
+2.Modify the scripts to train/test:
 
-  - Training
+ - Training
 
 ```
 sh ./scripts/train_trianglegan_ntu.sh <gpu_id>
@@ -41,6 +41,13 @@ sh ./scripts/train_trianglegan_senz3d.sh <gpu_id>
 ```
 
 3.The pretrained model is saved at `./checkpoints/{model_name}`. Check [here](https://drive.google.com/open?id=1UmZ2dgxyphCeeYKz4Opjh_Oq8NogSEev) for all the available TriangleGAN models.
+
+4.We provide an implementation of [GestureGAN](https://arxiv.org/pdf/1808.04859.pdf), ACMMM 2018.
+
+```
+sh ./scripts/train_gesturegan_ntu.sh <gpu_id>
+sh ./scripts/train_gesturegan_senz3d.sh <gpu_id>
+```
 
 ### 4.Evaluation
 
