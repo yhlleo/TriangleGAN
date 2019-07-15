@@ -3,20 +3,20 @@
 
 ### 1.Generated Results:
 
-  - [NTU Dataset >>>](./NTU-Visual.md)
-  - [Senz3d Dataset >>>](./SENZ3D-Visual.md)
+![](./gesture-skeleton.png)
+
+![](./gesture-triangle.png)
 
 ### 2.Attention
  
- - [Skeleton >>>](./Attention-Skeleton.md)
- - [Triangle >>>](./Attention-Triangle.md)
+![](./attention.png)
  
 ### 3.Rolling Visualization
 
- - [Skeleton >>>](./Visualization-Skeleton.md)
- - [Triangle >>>](./Visualization-Triangle.md)
+![](./gesture-rolling.png)
 
 ### 4.Diversity
 
- - [NTU Dataset >>>](./NTU-Diversity.md)
- - [Senz3d Dataset >>>](./SENZ3D-Diversity.md)
+![](./diversity-1.png)
+
+![](./diversity-2.png)
