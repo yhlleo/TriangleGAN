@@ -20,8 +20,8 @@ NITER_DECAY=10
 NORM=instance
 CHECKPOINTS_DIR=./checkpoints
 
-GPU_IDS=2
-python3.5 ./train.py \
+GPU_IDS=$1
+python3 ./train.py \
   --dataroot ${DATAROOT} \
   --data_name ${DATA_NAME} \
   --name ${RESTORE_NAME} \

@@ -30,14 +30,14 @@ conda env create -f environment.yml
   - Training
 
 ```
-sh ./scripts/train_trianglegan_ntu.sh
-sh ./scripts/train_trianglegan_senz3d.sh
+sh ./scripts/train_trianglegan_ntu.sh <gpu_id>
+sh ./scripts/train_trianglegan_senz3d.sh <gpu_id>
 ```
  - Testing
 
 ```
-sh ./scripts/test_trianglegan_ntu.sh
-sh ./scripts/train_trianglegan_senz3d.sh
+sh ./scripts/test_trianglegan_ntu.sh <gpu_id>
+sh ./scripts/train_trianglegan_senz3d.sh <gpu_id>
 ```
 
 3.The pretrained model is saved at `./checkpoints/{model_name}`. Check [here](https://drive.google.com/open?id=1UmZ2dgxyphCeeYKz4Opjh_Oq8NogSEev) for all the available TriangleGAN models.

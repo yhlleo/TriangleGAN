@@ -21,7 +21,7 @@ NORM=instance
 CHECKPOINTS_DIR=./checkpoints
 
 GPU_IDS=$1
-python3.5 ./train.py \
+python3 ./train.py \
   --dataroot ${DATAROOT} \
   --data_name ${DATA_NAME} \
   --name ${RESTORE_NAME} \
