@@ -2,6 +2,8 @@
 
 A new gesture-to-gesture translation framework. [Gesture-to-Gesture Translation in the Wild via Category-Independent Conditional Maps](), to be presented in ACM MultiMedia 2019.
 
+![](./figures/gesture-proposal.png)
+
 
 ### 1.Dataset preparing
 
