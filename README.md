@@ -66,6 +66,12 @@ This code is based on the [pytorch-CycleGAN-and-pix2pix](https://github.com/juny
 If you take use of our datasets or code, please cite our papers (coming soon):
 
 ```
+@article{liu2019gesture,
+  title={Gesture-to-gesture translation in the wild via category-independent conditional maps},
+  author={Liu, Yahui and De Nadai, Marco and Zen, Gloria and Sebe, Nicu and Lepri, Bruno},
+  journal={arXiv preprint arXiv:1907.xxx},
+  year={2019}
+}
 
 ```
 
