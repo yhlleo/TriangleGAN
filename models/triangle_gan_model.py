@@ -1,3 +1,5 @@
+# Author: Yahui Liu <yahui.liu@unitn.it>
+
 import torch
 import itertools
 import torch.nn.functional as F
