@@ -88,7 +88,7 @@ class GestureFullDataset(BaseDataset):
             id_B = self._id2arr(int(AB_path[3])-1, self.opt.vdim)
 
             # apply the same flipping to both A and B
-            if (not self.opt.no_flip) and random.random() > 0.5:
+            if (not self.opt.no_flip) and self.opt.phase == 'train' and random.random() > 0.5:
                 img_A = np.fliplr(img_A)
                 cond_A = np.fliplr(cond_A)
                 img_B = np.fliplr(img_B)

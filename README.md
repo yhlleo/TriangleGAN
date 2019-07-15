@@ -40,7 +40,11 @@ sh ./scripts/train_trianglegan_senz3d.sh
 
 ### 4.Evaluation
 
- - Metrics
+ - Metrics: 
+  - Peak Signal-toNoise Ratio, PSNR
+  - Fréchet Inception Distance, FID
+  - Inception Score, IS
+Notes: The lower, the better: MSE, FID, FRD
 
 ### 5.Visual Results
 

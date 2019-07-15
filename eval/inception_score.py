@@ -8,7 +8,7 @@ import torch.nn.functional as F
 from torchvision.models import inception_v3
 from scipy.stats import entropy
 
-def inception_score(data_generator, use_cuda=True, splits=10):
+def inception_score(data_generator, use_cuda=True, splits=10, use_normal=True):
     model = inception_v3(pretrained=True)
     if use_cuda:
         model.cuda()
@@ -18,6 +18,8 @@ def inception_score(data_generator, use_cuda=True, splits=10):
     for batch in data_generator:
         batch = F.interpolate(batch, size=(299, 299), mode='bilinear', align_corners=False)
         # Scale from range (0, 1) to range (-1, 1)
+        if use_normal:
+            batch = 2 * batch - 1
         s = model(batch)
         scores.append(F.softmax(s,dim=1).data.cpu().numpy())
 

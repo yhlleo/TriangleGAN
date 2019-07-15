@@ -5,11 +5,11 @@ MODEL_MODE=triangle_gan
 DATASET_MODE=gesture_part
 COND_TYPE=skeleton
 IMAGE_NAME=images-part
-TEST_NAME=test.part.lst #ntu.part.video.demo #ntu.part.user-study.demo #ntu.diversity.demo #ntu.part.demo
+TEST_NAME=test.part.lst
 
 INPUT_NC=3
 OUTPUT_NC=3
-VDIM=10 # gesture
+VDIM=10
 COND_DIM=1
 NGF=64
 BATCH_SIZE=1
@@ -21,7 +21,7 @@ NORM=instance
 CHECKPOINTS_DIR=./checkpoints
 NUM_TEST=20000
 
-GPU_IDS=0
+GPU_IDS=$1
 python3.5 ./test.py \
   --dataroot ${DATAROOT} \
   --data_name ${DATA_NAME} \

@@ -12,7 +12,7 @@ import json
 from basic_scores import mse, psnr
 from inception_score import inception_score
 from fid_scores import cal_fid as fid_score
-from frd_scores import cal_frechet_resnet_distance as frd_score
+#from frd_scores import cal_frechet_resnet_distance as frd_score
 from prd_score import prd_score
 
 import argparse
@@ -21,7 +21,7 @@ parser.add_argument('--metric_mode', type=str, default='mse', help='[mse | psnr 
 parser.add_argument('--model_name', type=str, default='ntu_part_gesturegan_skeleton')
 parser.add_argument('--results_dir', type=str, default='../results')
 parser.add_argument('--suffix_gt', type=str, default='real_B')
-parser.add_argument('--suffix_pred', type=str, default='fake_B', help='[fake_B | fake_B_masked | fake_B2_masked]')
+parser.add_argument('--suffix_pred', type=str, default='fake_B', help='Suffix of predicted file name')
 parser.add_argument('--batch_size', type=int, default=8)
 parser.add_argument('--gpu_id', type=str, default='')
 parser.add_argument('--output_json', type=str, default='')
@@ -67,11 +67,11 @@ if __name__ == '__main__':
         tgt_data_generator = data_io.data_prepare(tgt_img_list, batch_size, use_cuda)
         dims = 2048
         final_score = fid_score(src_data_generator, tgt_data_generator, dims, use_cuda)
-    elif metric_mode == 'frd': # TODO
-        src_data_generator = data_io.data_prepare(src_img_list, batch_size, use_cuda)
-        tgt_data_generator = data_io.data_prepare(tgt_img_list, batch_size, use_cuda)
-        dims = 1000
-        final_score = frd_score(src_data_generator, tgt_data_generator, dims, use_cuda)
+    #elif metric_mode == 'frd': # TODO
+    #    src_data_generator = data_io.data_prepare(src_img_list, batch_size, use_cuda)
+    #    tgt_data_generator = data_io.data_prepare(tgt_img_list, batch_size, use_cuda)
+    #    dims = 1000
+    #    final_score = frd_score(src_data_generator, tgt_data_generator, dims, use_cuda)
     elif metric_mode == 'prd':
         src_data_generator = data_io.data_prepare(src_img_list, batch_size, use_cuda)
         tgt_data_generator = data_io.data_prepare(tgt_img_list, batch_size, use_cuda)

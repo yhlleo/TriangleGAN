@@ -8,10 +8,6 @@
    |__ skeleton
    |__ boundary
    |__ triangle
-   |__ test-keypoint
-   |__ test-skeleton
-   |__ test-boundary
-   |__ test-triangle
    |__ test.part.lst
    |__ test.full.lst
    |__ train.part.lst
@@ -39,8 +35,6 @@
    - Keypoints, Skeleton: based-on the public project [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose).
 Notes: OpenPose can't detect all hand gestures in the two datasets.
    - Boundary, Triangle: manually annotated.
-   - Part and Full: there is an/no overlapping between training set and testing set in Part/Full setting.
-   - Full training and testing: Unlike GestureGAN, flipping and reversing order (A->B and B->A) are obtained in the data stream part, which are not listed in the files.
 
  - **Additional**:
 
@@ -52,4 +46,4 @@ Notes: OpenPose can't detect all hand gestures in the two datasets.
 
 ### 3.Download
 
- You can download the dataset from [Google Drive](https://drive.google.com/open?id=1jeT5dUE7SZeQkUtZLn8k_wNmghzni4vb) or [Baidu Wangpan](https://pan.baidu.com/s/1fGJflnT_Pt_PthEuNiPLkg)(pwd: 6bhc).
+ You can download the dataset from [Google Drive](), [zenodo]() or [Baidu Yunpan]() (psw: ).  

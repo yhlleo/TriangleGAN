@@ -124,11 +124,11 @@ class InceptionV3(nn.Module):
                               align_corners=False)
 
         if self.normalize_input:
-            #x = 2 * x - 1  # Scale from range (0, 1) to range (-1, 1)
-            x = x.clone()
-            x[:, 0] = x[:, 0] * (0.229 / 0.5) + (0.485 - 0.5) / 0.5
-            x[:, 1] = x[:, 1] * (0.224 / 0.5) + (0.456 - 0.5) / 0.5
-            x[:, 2] = x[:, 2] * (0.225 / 0.5) + (0.406 - 0.5) / 0.5
+            x = 2 * x - 1  # Scale from range (0, 1) to range (-1, 1)
+            #x = x.clone()
+            #x[:, 0] = x[:, 0] * (0.229 / 0.5) + (0.485 - 0.5) / 0.5
+            #x[:, 1] = x[:, 1] * (0.224 / 0.5) + (0.456 - 0.5) / 0.5
+            #x[:, 2] = x[:, 2] * (0.225 / 0.5) + (0.406 - 0.5) / 0.5
 
         for idx, block in enumerate(self.blocks):
             x = block(x)

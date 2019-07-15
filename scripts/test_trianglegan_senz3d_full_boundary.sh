@@ -5,11 +5,11 @@ MODEL_MODE=triangle_gan
 DATASET_MODE=gesture_full
 COND_TYPE=boundary
 IMAGE_NAME=images-full
-TEST_NAME=test.senz3d.lst #senz3d.diversity.demo #senz3d.full.demo
+TEST_NAME=test.full.lst 
 
 INPUT_NC=3
 OUTPUT_NC=3
-VDIM=11 # gesture
+VDIM=11
 COND_DIM=1
 NGF=64
 BATCH_SIZE=1
@@ -21,7 +21,7 @@ NORM=instance
 CHECKPOINTS_DIR=./checkpoints
 NUM_TEST=20000
 
-GPU_IDS=0
+GPU_IDS=$1
 python3.5 ./test.py \
   --dataroot ${DATAROOT} \
   --data_name ${DATA_NAME} \

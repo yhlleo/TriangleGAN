@@ -5,7 +5,7 @@ MODEL_MODE=triangle_gan
 DATASET_MODE=gesture_part
 COND_TYPE=skeleton
 IMAGE_NAME=images-part
-TEST_NAME=test.part.lst #senz3d.part.video.demo #senz3d.part.user-study.demo #senz3d.diversity.demo #senz3d.part.demo
+TEST_NAME=test.part.lst 
 
 INPUT_NC=3
 OUTPUT_NC=3
@@ -21,7 +21,7 @@ NORM=instance
 CHECKPOINTS_DIR=./checkpoints
 NUM_TEST=20000
 
-GPU_IDS=0
+GPU_IDS=$1
 python3.5 ./test.py \
   --dataroot ${DATAROOT} \
   --data_name ${DATA_NAME} \

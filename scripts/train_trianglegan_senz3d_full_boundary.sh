@@ -9,14 +9,13 @@ TRAIN_NAME=train.full.lst
 
 INPUT_NC=3
 OUTPUT_NC=3
-VDIM=11 # gesture
+VDIM=11 
 COND_DIM=1
 NGF=64
 BATCH_SIZE=4
 LOAD_SIZE=256
 NITER=10
 NITER_DECAY=10
-CONTINUE_TRAIN=0
 
 NORM=instance
 CHECKPOINTS_DIR=./checkpoints
@@ -44,4 +43,5 @@ python3.5 ./train.py \
   --gpu_ids ${GPU_IDS} \
   --niter ${NITER} \
   --niter_decay ${NITER_DECAY} \
-  --continue_train ${CONTINUE_TRAIN}
+  --continue_train 0 \
+  --display_id 0

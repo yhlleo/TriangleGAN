@@ -5,18 +5,17 @@ MODEL_MODE=triangle_gan
 DATASET_MODE=gesture_full
 COND_TYPE=triangle
 IMAGE_NAME=images-full
-TEST_NAME=test.full.lst #senz3d.full.user-study.demo #senz3d.full.video.demo #framework.demo #senz3d.translation.demo #senz3d.diversity.demo #senz3d.full.demo 
+TEST_NAME=test.full.lst 
 
 INPUT_NC=3
 OUTPUT_NC=3
-VDIM=11 # gesture
+VDIM=11
 COND_DIM=1
 NGF=64
 BATCH_SIZE=1
 LOAD_SIZE=256
 ROLL_NUM=1
 DRAW_KP=0
-GEO_TRANS=0
 
 NORM=instance
 CHECKPOINTS_DIR=./checkpoints
@@ -45,5 +44,4 @@ python3 ./test.py \
   --gpu_ids ${GPU_IDS} \
   --num_test ${NUM_TEST} \
   --roll_num ${ROLL_NUM} \
-  --draw_kp ${DRAW_KP} \
-  --geo_trans ${GEO_TRANS}
+  --draw_kp ${DRAW_KP}
