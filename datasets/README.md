@@ -32,8 +32,7 @@
 |`train.full.lst`|Training list with `image-full`|44100(ntu)/138864(senz3d)|-|
 
  - **Notes**:
-   - Keypoints, Skeleton: based-on the public project [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose).
-Notes: OpenPose can't detect all hand gestures in the two datasets.
+   - Keypoints, Skeleton: based-on the public project [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) (Notes: OpenPose can't detect all hand gestures in the two datasets).
    - Boundary, Triangle: manually annotated.
 
  - **Additional**:
