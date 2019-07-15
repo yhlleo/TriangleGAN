@@ -1,3 +1,5 @@
+# Author: Yahui Liu <yahui.liu@unitn.it>
+
 import torch
 import itertools
 import torch.nn.functional as F
@@ -44,7 +46,6 @@ class GestureGANRawModel(BaseModel):
         # specify the training losses you want to print out. The training/test scripts will call <BaseModel.get_current_losses>
         self.loss_names = ['D', 'GAB', 'rec', 'cycle', 'idt', 'color']
         # specify the images you want to save/display. The training/test scripts will call <BaseModel.get_current_visuals>
-        #self.visual_names = ['real_A', 'cond_B', 'fake_B', ]  # combine visualizations for A
         self.visual_names = ['real_B', 'fake_B']
         # specify the models you want to save to the disk. The training/test scripts will call <BaseModel.save_networks> and <BaseModel.load_networks>.
         if self.isTrain:
@@ -53,14 +54,14 @@ class GestureGANRawModel(BaseModel):
             self.model_names = ['G']
 
         # define networks (both Generators and discriminators)
-        self.netG = gesturegan.define_GGesture(opt.input_nc+opt.cond_dim, # (3+1)x256x256
+        self.netG = gesturegan.define_GGesture(opt.input_nc+opt.cond_dim,
                                                opt.output_nc,
                                                opt.ngf,
                                                opt.norm,
                                                not opt.no_dropout,
                                                opt.init_type,
                                                opt.init_gain,
-                                               self.gpu_ids)  # out_nc: 3x256x256
+                                               self.gpu_ids) 
 
         if self.isTrain:  # define discriminators
             self.netD = gesturegan.define_DGesture(opt.output_nc, 
@@ -125,10 +126,6 @@ class GestureGANRawModel(BaseModel):
             # cycle reconstruction: G(G(B, S_A), S_B) -> B and G(G(A, S_B), S_A) -> A
             self.cycle_B = self.netG(torch.cat([self.fake_A, self.cond_B],dim=1))
             self.cycle_A = self.netG(torch.cat([self.fake_B, self.cond_A],dim=1))
-            
-            # identity: G(A, S_A) -> A and G(B, S_B) -> B
-            #self.idt_A = self.netG(torch.cat([self.real_A, self.cond_A],dim=1))
-            #self.idt_B = self.netG(torch.cat([self.real_B, self.cond_B],dim=1))
 
             self.feature_real_B = self.vgg_mdoel(F.interpolate(self.real_B, size=(224, 224), mode='bilinear', align_corners=False))
             self.feature_fake_B = self.vgg_mdoel(F.interpolate(self.fake_B, size=(224, 224), mode='bilinear', align_corners=False))
