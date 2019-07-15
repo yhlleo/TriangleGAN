@@ -1,7 +1,7 @@
 DATAROOT=./datasets
 DATA_NAME=ntu_dataset
 RESTORE_NAME=ntu_full_trianglegan_triangle
-MODEL_MODE=triangle_gan
+MODEL_MODE=trianglegan
 DATASET_MODE=gesture_full
 COND_TYPE=triangle
 IMAGE_NAME=images-full

@@ -1,7 +1,7 @@
 DATAROOT=./datasets
 DATA_NAME=senz3d_dataset
 RESTORE_NAME=senz3d_part_trianglegan_skeleton
-MODEL_MODE=triangle_gan
+MODEL_MODE=trianglegan
 DATASET_MODE=gesture_part
 COND_TYPE=skeleton
 IMAGE_NAME=images-part

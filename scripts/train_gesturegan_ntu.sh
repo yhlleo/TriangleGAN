@@ -1,7 +1,7 @@
 DATAROOT=./datasets
 DATA_NAME=ntu_dataset
 RESTORE_NAME=ntu_part_gesturegan_skeleton
-MODEL_MODE=gesture_gan
+MODEL_MODE=gesturegan
 DATASET_MODE=gesture_part
 COND_TYPE=skeleton
 IMAGE_NAME=images-part

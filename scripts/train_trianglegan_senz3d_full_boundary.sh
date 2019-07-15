@@ -1,7 +1,7 @@
 DATAROOT=./datasets
 DATA_NAME=senz3d_dataset
 RESTORE_NAME=senz3d_full_trianglegan_boundary
-MODEL_MODE=triangle_gan
+MODEL_MODE=trianglegan
 DATASET_MODE=gesture_full
 COND_TYPE=boundary
 IMAGE_NAME=images-full
