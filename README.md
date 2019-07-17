@@ -51,6 +51,10 @@ sh ./scripts/train_gesturegan_senz3d.sh <gpu_id>
 
 ### 4.Evaluation
 
+![](./figures/diversity-1.png)
+
+![](./figures/diversity-2.png)
+
 [More Details >>>](./eval/README.md)
 
 ### 5.Visual Results
