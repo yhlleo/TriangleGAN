@@ -14,9 +14,3 @@
 ### 3.Rolling Visualization
 
 ![](./gesture-rolling.png)
-
-### 4.Diversity
-
-![](./diversity-1.png)
-
-![](./diversity-2.png)
