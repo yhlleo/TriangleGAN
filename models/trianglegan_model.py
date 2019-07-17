@@ -32,7 +32,7 @@ class TriangleGANModel(BaseModel):
             parser.add_argument('--lambda_adv', type=float, default=2.0, help='weight for adversarial loss')
             parser.add_argument('--lambda_prob', type=float, default=1.0, help='weight for discriminal loss')
             parser.add_argument('--lambda_cls', type=float, default=1.0, help='weight for classification loss')
-            parser.add_argument('--lambda_gp', type=float, default=0.0, help='weight for gradient penalty loss')
+            parser.add_argument('--lambda_gp', type=float, default=10.0, help='weight for gradient penalty loss')
             parser.add_argument('--lambda_idt', type=float, default=10.0, help='use identity mapping')
             parser.add_argument('--lambda_tv', type=float, default=1e-5, help='weight for tv loss')
         return parser
