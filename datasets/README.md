@@ -37,7 +37,7 @@
 
  - **Additional**:
 
- In NTU Dataset,  it can make the model confused that what is the real direction of hand gesture, as shown in the following table. We ask the users to provide some more information to confirm that.
+ In NTU Dataset,  it can make the model confusing that what the real direction of hand gesture is, as shown in the following table. We ask the users to provide some more simple information to confirm that.
 
 |Image|Triangle|Modified Triangle|
 |:----:|:----:|:----:|
