@@ -65,6 +65,13 @@ sh ./scripts/train_gesturegan_senz3d.sh <gpu_id>
 
 This code is based on the [pytorch-CycleGAN-and-pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix). Thanks to the contributors of this project.
 
+### Related Work
+- [Pose Guided Person Image Generation](https://arxiv.org/pdf/1705.09368.pdf), NIPS 2017, [[Tensorflow]](https://github.com/charliememory/Pose-Guided-Person-Image-Generation)
+- [GANimation: Anatomically-aware Facial Animation from a Single Image](https://arxiv.org/pdf/1807.09251.pdf), ECCV 2018, [[PyTorch]](https://github.com/albertpumarola/GANimation)
+- [StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation](https://arxiv.org/pdf/1711.09020.pdf), CVPR 2018, [[PyTorch]](https://github.com/yunjey/stargan)
+- [GestureGAN for Hand Gesture-to-Gesture Translation in the Wild](https://arxiv.org/pdf/1808.04859.pdf), ACM MM 2018, [[Pytorch]](https://github.com/Ha0Tang/GestureGAN)
+- [Animating Arbitrary Objects via Deep Motion Transfer](https://arxiv.org/pdf/1812.08861.pdf), CVPR 2019, [[Pytorch]](https://github.com/AliaksandrSiarohin/monkey-net)
+
 ### References
 
 If you take use of our datasets or code, please cite our papers:
