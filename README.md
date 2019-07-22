@@ -42,7 +42,7 @@ sh ./scripts/train_trianglegan_senz3d.sh <gpu_id>
 
 3.The pretrained model is saved at `./checkpoints/{model_name}`. Check [here](https://drive.google.com/open?id=1UmZ2dgxyphCeeYKz4Opjh_Oq8NogSEev) for all the available TriangleGAN models.
 
-4.We provide an implementation of [GestureGAN](https://arxiv.org/pdf/1808.04859.pdf), ACM MM 2018.
+4.We provide an implementation of [GestureGAN](https://arxiv.org/pdf/1808.04859.pdf), ACM MM 2018 [[code]](https://github.com/Ha0Tang/GestureGAN).
 
 ```
 sh ./scripts/train_gesturegan_ntu.sh <gpu_id>
