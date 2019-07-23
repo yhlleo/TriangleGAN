@@ -139,8 +139,8 @@ class TriangleGANModel(BaseModel):
                 self.real_RB = torch.argmax(input['R_B'].to(self.device), dim=1).long().cuda()
         #else:
 
-    def _inference(self, net, real_A, cond_B, RB, rec_A=None):
-        kp, fake_B, fake_B_mask = net(real_A, cond_B, RB, rec_A)
+    def _inference(self, net, real_A, cond_B, RB, initial_B=None):
+        kp, fake_B, fake_B_mask = net(real_A, cond_B, RB, initial_B)
         fake_B_masked = fake_B_mask * real_A + (1 - fake_B_mask) * fake_B
         return kp, fake_B, fake_B_mask, fake_B_masked
 
