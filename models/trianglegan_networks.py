@@ -8,7 +8,7 @@ import functools
 from .networks import get_norm_layer, init_net, ResnetBlock
 from . import keypoint_detector as kpd
 
-# Triangle GAN
+# TriangleGAN: https://arxiv.org/pdf/1907.05916.pdf
 #-------------------------------------------------------------------------------------
 class TriangleGANGenerator(nn.Module):
     def __init__(self, in_nc, out_nc, ngf, vdim=11, cond_dim=1, num_kp=64, 

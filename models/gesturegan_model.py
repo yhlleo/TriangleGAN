@@ -13,7 +13,7 @@ from . import gesturegan_networks as gesturegan
 
 class GestureGANRawModel(BaseModel):
     """
-    GestureGAN
+    GestureGAN: https://arxiv.org/pdf/1808.04859.pdf
     """
     @staticmethod
     def modify_commandline_options(parser, is_train=True):

@@ -12,7 +12,7 @@ from . import trianglegan_networks as trianglegan
 
 class TriangleGANModel(BaseModel):
     """
-    TriangleGAN
+    TriangleGAN: https://arxiv.org/pdf/1907.05916.pdf
     """
     @staticmethod
     def modify_commandline_options(parser, is_train=True):
