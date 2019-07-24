@@ -27,7 +27,7 @@ class BaseOptions():
         parser.add_argument('--checkpoints_dir', type=str, default='./checkpoints', help='models are saved here')
 
         # model parameters
-        parser.add_argument('--model', type=str, default='cycle_gan', help='chooses which model to use. [cycle_gan | pix2pix | test | colorization]')
+        parser.add_argument('--model', type=str, default='trainglegan', help='chooses which model to use. [trainglegan | gesturegan]')
         parser.add_argument('--input_nc', type=int, default=3, help='# of input image channels: 3 for RGB and 1 for grayscale')
         parser.add_argument('--output_nc', type=int, default=3, help='# of output image channels: 3 for RGB and 1 for grayscale')
         parser.add_argument('--ngf', type=int, default=64, help='# of gen filters in the last conv layer')
@@ -52,7 +52,7 @@ class BaseOptions():
         parser.add_argument('--roll_num', type=int, default=1, help='iteration number for rolling guidance refinement module')
         parser.add_argument('--draw_kp', type=int, default=0, help='if true, draw key-points on the final images.')
         # dataset parameters
-        parser.add_argument('--dataset_mode', type=str, default='cond_gesture2', help='chooses how datasets are loaded. [cond_gesture1 | cond_gesture2 | cond_gesture3]')
+        parser.add_argument('--dataset_mode', type=str, default='gesture_part', help='chooses how datasets are loaded. [gesture_part | gesture_full | gesture_scalar]')
         parser.add_argument('--direction', type=str, default='AtoB', help='AtoB or BtoA')
         parser.add_argument('--serial_batches', action='store_true', help='if true, takes images in order to make batches, otherwise takes them randomly')
         parser.add_argument('--num_threads', default=4, type=int, help='# threads for loading data')

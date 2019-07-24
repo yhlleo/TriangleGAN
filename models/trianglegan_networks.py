@@ -96,15 +96,15 @@ class TriangleGANGenerator(nn.Module):
             out_nc = out_nc // 2
         return model
 
-    def forward(self, x, cond, r, rec_x=None):
+    def forward(self, x, cond, r, init_y=None):
         #idx = torch.argmax(r)
         in_r = r.unsqueeze(2).unsqueeze(3).expand(r.size(0), r.size(1), x.size(2), x.size(3))
         image_features = self.image_content(x)
         
-        if rec_x is None:
+        if init_y is None:
             condition_features = self.condition(torch.cat([cond, in_r], dim=1))
         else:
-            condition_features = self.condition(torch.cat([rec_x, cond, in_r], dim=1))
+            condition_features = self.condition(torch.cat([init_y, cond, in_r], dim=1))
 
         final_shape = condition_features.shape
         heatmap = condition_features.view(final_shape[0], final_shape[1], -1).clone()
