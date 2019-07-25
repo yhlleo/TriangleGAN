@@ -51,24 +51,17 @@ class GesturePartDataset(BaseDataset):
         # read a image and its corresponding label map given a random integer index
         AB_path = self.AB_paths[index]
         if len(AB_path) == 5:
-            A_path = os.path.join(self.data_dir, self.image_name, AB_path[0]+self.im_suffix)
-            img_A = cv2.imread(A_path, cv2.IMREAD_UNCHANGED)
-            img_A = cv2.cvtColor(img_A, cv2.COLOR_BGR2RGB)
-            cond_A = cv2.imread(os.path.join(self.data_dir, self.cond_type, AB_path[0]+self.im_suffix), 
-                                cv2.IMREAD_GRAYSCALE)
-            img_A = cv2.resize(img_A, (self.opt.load_size, self.opt.load_size), interpolation=cv2.INTER_CUBIC)
-            cond_A = cv2.resize(cond_A, (self.opt.load_size, self.opt.load_size), interpolation=cv2.INTER_CUBIC)
-            _, cond_A = cv2.threshold(cond_A, 64, 255, cv2.THRESH_BINARY)
+
+            img_A_path = os.path.join(self.data_dir, self.image_name, AB_path[0]+self.im_suffix)
+            img_A = imread(img_A_path, self.opt.load_size, convert_rgb=True)
+            cond_A_path = os.path.join(self.data_dir, self.cond_type, AB_path[0]+self.im_suffix)
+            cond_A = imread(cond_A_path, self.opt.load_size, load_mode=cv2.IMREAD_GRAYSCALE, thresh=64)
             id_A = self._id2arr(int(AB_path[1])-1, self.opt.vdim)
 
-            img_B = cv2.imread(os.path.join(self.data_dir, self.image_name, AB_path[2]+self.im_suffix), 
-                               cv2.IMREAD_UNCHANGED)
-            img_B = cv2.cvtColor(img_B, cv2.COLOR_BGR2RGB)
-            cond_B = cv2.imread(os.path.join(self.data_dir, self.cond_type, AB_path[2]+self.im_suffix), 
-                                cv2.IMREAD_GRAYSCALE)
-            img_B = cv2.resize(img_B, (self.opt.load_size, self.opt.load_size), interpolation=cv2.INTER_CUBIC)
-            cond_B = cv2.resize(cond_B, (self.opt.load_size, self.opt.load_size), interpolation=cv2.INTER_CUBIC)
-            _, cond_B = cv2.threshold(cond_B, 64, 255, cv2.THRESH_BINARY)
+            img_B_path = os.path.join(self.data_dir, self.image_name, AB_path[2]+self.im_suffix)
+            img_B = imread(img_B_path, self.opt.load_size, convert_rgb=True)
+            cond_B_path = os.path.join(self.data_dir, self.cond_type, AB_path[2]+self.im_suffix)
+            cond_B = imread(cond_B_path, self.opt.load_size, load_mode=cv2.IMREAD_GRAYSCALE, thresh=64)
             id_B = self._id2arr(int(AB_path[3])-1, self.opt.vdim)
 
             # apply the same flipping to both A and B
@@ -101,14 +94,11 @@ class GesturePartDataset(BaseDataset):
                     'cond_B': cond_B,
                     'A_paths': A_path}#self.cond_dict[AB_path[2]]}
         else:
-            A_path = os.path.join(self.data_dir, self.image_name, AB_path[0]+self.im_suffix)
-            img_A = cv2.imread(A_path, cv2.IMREAD_UNCHANGED)
-            img_A = cv2.cvtColor(img_A, cv2.COLOR_BGR2RGB)
-            img_A = cv2.resize(img_A, (self.opt.load_size, self.opt.load_size), interpolation=cv2.INTER_CUBIC)            
-            cond_B = cv2.imread(os.path.join(self.data_dir, self.cond_type, AB_path[2]+self.im_suffix), 
-                                cv2.IMREAD_GRAYSCALE)
-            cond_B = cv2.resize(cond_B, (self.opt.load_size, self.opt.load_size), interpolation=cv2.INTER_CUBIC)
-            
+            img_A_path = os.path.join(self.data_dir, self.image_name, AB_path[0]+self.im_suffix)
+            img_A = imread(img_A_path, self.opt.load_size, convert_rgb=True)
+            cond_B_path = os.path.join(self.data_dir, self.cond_type, AB_path[2]+self.im_suffix)
+            cond_B = imread(cond_B_path, self.opt.load_size, load_mode=cv2.IMREAD_GRAYSCALE)
+
             if self.opt.geo_trans:
                 cond_B = np.array(self._im_trans(cond_B, self._get_params(30,0.3,32,0)), dtype='uint8')
             

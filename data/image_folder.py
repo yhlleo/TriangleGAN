@@ -11,6 +11,7 @@ import os
 import codecs
 from collections import OrderedDict
 import random
+import cv2
 
 IMG_EXTENSIONS = [
     '.jpg', '.JPG', '.jpeg', '.JPEG',
@@ -119,3 +120,12 @@ class ImageFolder(data.Dataset):
 
     def __len__(self):
         return len(self.imgs)
+
+def imread(path, load_size, load_mode=cv2.IMREAD_UNCHANGED, convert_rgb=False, thresh=-1):
+    im = cv2.imread(path, load_mode)
+    if convert_rgb:
+        im = cv2.cvtColor(im, cv2.COLOR_BGR2RGB)
+    im = cv2.resize(im, (load_size, load_size), interpolation=cv2.INTER_CUBIC)
+    if thresh > 0:
+        _, im = cv2.threshold(im, thresh, 255, cv2.THRESH_BINARY)
+    return im
