@@ -14,7 +14,7 @@ class CondGestureV1Dataset(BaseDataset):
     def __init__(self, opt):
         """Initialize this dataset class."""
         BaseDataset.__init__(self, opt)
-        self.im_suffix = '.png'
+        self.im_suffix  = '.png'
         self.image_name = opt.image_name
         if self.opt.phase == 'train':
             self.data_dir = os.path.join(self.opt.dataroot,
@@ -52,11 +52,11 @@ class CondGestureV1Dataset(BaseDataset):
 
             img_A = Image.open(os.path.join(self.data_dir, self.image_name, AB_path[0]+self.im_suffix)).convert('RGB')
             img_A = img_A.resize((self.opt.load_size, self.opt.load_size), Image.BICUBIC)
-            id_A = self._id2arr(int(AB_path[1])-1, self.opt.vdim)
+            id_A  = self._id2arr(int(AB_path[1])-1, self.opt.vdim)
 
             img_B = Image.open(os.path.join(self.data_dir, self.image_name, AB_path[2]+self.im_suffix)).convert('RGB')
             img_B = img_B.resize((self.opt.load_size, self.opt.load_size), Image.BICUBIC)
-            id_B = self._id2arr(int(AB_path[3])-1, self.opt.vdim)
+            id_B  = self._id2arr(int(AB_path[3])-1, self.opt.vdim)
 
             # apply the same flipping to both A and B
             if (not self.opt.no_flip) and random.random() > 0.5:
@@ -73,10 +73,10 @@ class CondGestureV1Dataset(BaseDataset):
                     'R_B': id_B}
         else:
             A_path = os.path.join(self.data_dir, self.image_name, AB_path[0]+self.im_suffix)
-            img_A = Image.open(A_path).convert('RGB')
-            img_A = img_A.resize((self.opt.load_size, self.opt.load_size), Image.BICUBIC)
-            img_A = self.transform(img_A)
-            id_B = self._id2arr(int(AB_path[1])-1, self.opt.vdim)
+            img_A  = Image.open(A_path).convert('RGB')
+            img_A  = img_A.resize((self.opt.load_size, self.opt.load_size), Image.BICUBIC)
+            img_A  = self.transform(img_A)
+            id_B   = self._id2arr(int(AB_path[1])-1, self.opt.vdim)
 
             return {'A': img_A, 'R_B': id_B, 'A_paths': A_path}
 
