@@ -1,6 +1,6 @@
 ## TriangleGAN
 
-A new gesture-to-gesture translation framework. [Gesture-to-Gesture Translation in the Wild via Category-Independent Conditional Maps](https://arxiv.org/pdf/1907.05916.pdf), to be presented in ACM International Conference on Multimedia, 2019.
+A new gesture-to-gesture translation framework. [Gesture-to-Gesture Translation in the Wild via Category-Independent Conditional Maps](https://arxiv.org/pdf/1907.05916.pdf), published in ACM International Conference on Multimedia, 2019.
 
 ![](./figures/gesture-proposal.png)
 
