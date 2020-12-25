@@ -72,6 +72,10 @@ This code is based on the [pytorch-CycleGAN-and-pix2pix](https://github.com/juny
 - [GestureGAN for Hand Gesture-to-Gesture Translation in the Wild](https://arxiv.org/pdf/1808.04859.pdf), ACM MM 2018, [[Pytorch]](https://github.com/Ha0Tang/GestureGAN)
 - [Animating Arbitrary Objects via Deep Motion Transfer](https://arxiv.org/pdf/1812.08861.pdf), CVPR 2019, [[Pytorch]](https://github.com/AliaksandrSiarohin/monkey-net)
 
+### Evaluation codes
+
+We recommend to evaluate the performances of the compared models mainly based on this repo: [GAN-Metrics](https://github.com/yhlleo/GAN-Metrics)
+
 ### References
 
 If you take use of our datasets or code, please cite our papers:
