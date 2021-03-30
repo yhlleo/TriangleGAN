@@ -1,3 +1,9 @@
+![Python 3.5](https://img.shields.io/badge/python-3.5.5-green.svg)
+![Packagist](https://img.shields.io/badge/Pytorch-0.4.1-red.svg)
+![Last Commit](https://img.shields.io/github/last-commit/yhlleo/TriangleGAN)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-blue.svg)]((https://github.com/yhlleo/TriangleGAN/graphs/commit-activity))
+![Contributing](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
+
 ## TriangleGAN
 
 A new gesture-to-gesture translation framework. [Gesture-to-Gesture Translation in the Wild via Category-Independent Conditional Maps](https://arxiv.org/pdf/1907.05916.pdf), published in ACM International Conference on Multimedia, 2019.
